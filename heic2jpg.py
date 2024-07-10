@@ -4,6 +4,7 @@ from PIL import Image
 import pillow_heif
 import os
 import traceback
+import shlex  # Added to handle file names with spaces
 
 # Register HEIF plugin
 pillow_heif.register_heif_opener()
@@ -27,10 +28,11 @@ def convert_heic_to_jpg(heic_path):
         img.save(jpg_path, "JPEG")
         return jpg_path
     except Exception as e:
+        log_message(f"Error converting {heic_path}: {e}")
         return None
 
 def drop(event):
-    files = event.data.split()
+    files = shlex.split(event.data)  # Updated to handle file names with spaces
     for file in files:
         if file.lower().endswith(".heic"):
             jpg_file = convert_heic_to_jpg(file)
@@ -40,11 +42,11 @@ def drop(event):
                 status_text.config(state=tk.DISABLED)
             else:
                 status_text.config(state=tk.NORMAL)
-                status_text.insert(tk.END, "Conversion failed. Check log for details.\n\n")
+                status_text.insert(tk.END, f"Failed to convert {file}. Check log for details.\n\n")  # Updated error message
                 status_text.config(state=tk.DISABLED)
         else:
             status_text.config(state=tk.NORMAL)
-            status_text.insert(tk.END, "Please drop .heic files only.\n\n")
+            status_text.insert(tk.END, f"Invalid file type: {file}. Please drop .heic files only.\n\n")  # Updated error message
             status_text.config(state=tk.DISABLED)
 
 root = TkinterDnD.Tk()

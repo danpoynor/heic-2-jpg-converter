@@ -25,8 +25,16 @@ def convert_heic_to_jpg(heic_path):
     try:
         jpg_path = os.path.splitext(heic_path)[0] + ".jpg"
 
-        # Use Pillow to open the HEIC file
-        img = Image.open(heic_path)
+        # Use pillow_heif to open the HEIC file
+        heif_file = pillow_heif.open_heif(heic_path)
+        img = Image.frombytes(
+            heif_file.mode, 
+            heif_file.size, 
+            heif_file.data, 
+            "raw", 
+            heif_file.mode, 
+            heif_file.stride
+        )
 
         # Convert to RGB and save as JPG
         img = img.convert("RGB")

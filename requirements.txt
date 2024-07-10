@@ -7,3 +7,4 @@ pyinstaller-hooks-contrib==2024.7
 pywin32-ctypes==0.2.2
 setuptools==70.3.0
 tkinterdnd2==0.3.0
+pillow_heif==0.9.3

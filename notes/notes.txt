@@ -1,0 +1,3 @@
+pyinstaller -F -w heic2jpg.py --additional-hooks-dir=.
+
+pyinstaller -F -w heic2jpg.py --icon=heic2jpg_icon.ico --additional-hooks-dir=.

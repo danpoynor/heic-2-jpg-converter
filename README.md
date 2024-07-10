@@ -6,7 +6,7 @@ A quick simple application to convert HEIC files to JPG format. Drag and drop HE
 
 ## Usage
 
-1. Download the ZIP file.
+1. Download the ZIP file from the `dist/` directory.
 2. Extract the ZIP file.
 3. Run the executable.
 4. Drag and drop HEIC files onto the application window. The files will be automatically converted to JPG format.

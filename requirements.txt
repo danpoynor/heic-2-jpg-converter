@@ -5,6 +5,6 @@ pillow==10.4.0
 pyinstaller==6.9.0
 pyinstaller-hooks-contrib==2024.7
 pywin32-ctypes==0.2.2
-setuptools==70.3.0
+setuptools==78.1.1
 tkinterdnd2==0.3.0
 pillow_heif==0.9.3
